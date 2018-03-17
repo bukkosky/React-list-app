@@ -11,7 +11,7 @@ class ListItem extends Component {
                 <div>
                     {image ?
                         <img src={image} alt=""/> :
-                        <span> NO IMAGE :</span>
+                        <span> NO IMAGE :(</span>
                     }
                 </div>
                 <div>{title}</div>
