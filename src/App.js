@@ -63,12 +63,7 @@ class App extends Component {
                            rating={rating}/>
              ))}
          </div>
-          <div>
-              {filteredData.map(({ id, rating}) => (
-                  <RatingForm key={id}
-                              rating={rating}/>
-              ))}
-          </div>
+         <RatingForm data={filteredData}/>
       </div>
     );
   }
