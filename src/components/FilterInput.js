@@ -19,8 +19,6 @@ class FilterInput extends Component {
         })
     };
 
-
-
     render() {
         return(
             <form onSubmit={this.submit}>

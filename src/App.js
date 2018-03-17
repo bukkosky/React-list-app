@@ -14,12 +14,22 @@ class App extends Component {
 
     state = {
         fetchedData: [],
-        filterData: []
+        filteredData: []
     };
 
     filterData = (dataToFilter) => {
-        console.log(dataToFilter)
-    };
+        const { fetchedData } = this.state
+
+        const filteredData = fetchedData.filter(item => {
+            return item.title.toLowerCase()
+                .indexOf(dataToFilter.toLowerCase()) !==-1
+        });
+        console.log(filteredData)
+        this.setState({
+            filteredData
+        })
+
+        };
 
     fetchData = (numberOfItemsToFetch) => {
 
@@ -29,7 +39,8 @@ class App extends Component {
             .then(fetchedData => fetchedData.sort(sortComparator))
             .then(fetchedData => {
                 this.setState({
-                    fetchedData
+                    fetchedData,
+                    filteredData: fetchedData,
                 });
                 console.log(fetchedData)
             })
@@ -37,14 +48,14 @@ class App extends Component {
 
 
   render() {
-    const {fetchedData} = this.state;
+    const {filteredData} = this.state;
 
     return (
       <div className="App">
           <FetchForm onSubmit={this.fetchData} />
           <FilterInput onSubmit={this.filterData} />
              <div>
-                 {fetchedData.map(({ id, title, image, rating}) => (
+                 {filteredData.map(({ id, title, image, rating}) => (
                      <ListItem key={id}
                                title={title}
                                image={image}
