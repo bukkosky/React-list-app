@@ -63,7 +63,7 @@ class App extends Component {
                            rating={rating}/>
              ))}
          </div>
-         <RatingForm data={filteredData}/>
+          {filteredData.length > 0 &&<RatingForm data={filteredData}/> }
       </div>
     );
   }
