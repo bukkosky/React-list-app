@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FetchForm from './components/FetchForm'
 import ListItem from './components/ListItem'
 import FilterInput from './components/FilterInput'
+import RatingForm from './components/RatingForm'
 import './App.css';
 import { sortComparator } from './utils'
 
@@ -53,16 +54,21 @@ class App extends Component {
     return (
       <div className="App">
           <FetchForm onSubmit={this.fetchData} />
-          <FilterInput onSubmit={this.filterData} />
-             <div>
-                 {filteredData.map(({ id, title, image, rating}) => (
-                     <ListItem key={id}
-                               title={title}
-                               image={image}
-                               rating={rating}/>
-                 ))}
-             </div>
-
+          {filteredData.length > 0 && <FilterInput onSubmit={this.filterData} /> }
+         <div>
+             {filteredData.map(({ id, title, image, rating}) => (
+                 <ListItem key={id}
+                           title={title}
+                           image={image}
+                           rating={rating}/>
+             ))}
+         </div>
+          <div>
+              {filteredData.map(({ id, rating}) => (
+                  <RatingForm key={id}
+                              rating={rating}/>
+              ))}
+          </div>
       </div>
     );
   }

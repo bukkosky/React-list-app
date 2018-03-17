@@ -1,8 +1,8 @@
 
 export const sortComparator = (left, right) => {
-    if (left.rating > right.rating) {
+    if (left.title > right.title) {
         return 1
-    } else if (left.rating < right.rating) {
+    } else if (left.title < right.title) {
         return -1
     }
     return 0

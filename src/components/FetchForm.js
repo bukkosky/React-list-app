@@ -11,12 +11,6 @@ class FetchForm extends Component {
         this.props.onSubmit(this.input.value)
     };
 
-    // change = (e) => {
-    //     this.setState({
-    //         value: e.target.value
-    //     })
-    // };
-
     render() {
         return (
             <form onSubmit={this.submit}>

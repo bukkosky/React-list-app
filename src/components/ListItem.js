@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import RatingForm from'../components/RatingForm'
 import '../App.css';
 
 class ListItem extends Component {
@@ -15,7 +16,7 @@ class ListItem extends Component {
                     }
                 </div>
                 <div>{title}</div>
-                <div>{rating}</div>
+                <RatingForm rating={rating} />
             </div>
         );
     }
