@@ -65,8 +65,10 @@ class App extends Component {
     return (
       <div className="App">
           <FetchForm onSubmit={this.fetchData} />
+
           {this.state.fetchedData.length > 0
           && <FilterInput onChangeFilterInput={this.changeFilterInput} filterInputValue={this.state.dataToFilter } /> }
+
          <div>
              {filteredData.map(({ id, title, image, rating}) => (
                  <ListItem key={id}
