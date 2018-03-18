@@ -15,7 +15,19 @@ class App extends Component {
 
     state = {
         fetchedData: [],
-        filteredData: []
+        filteredData: [],
+        dataToFilter: ''
+    };
+
+
+
+    changeFilterInput = (e) => {
+        this.setState({
+            dataToFilter: e.target.value
+        }, () => {
+            this.filterData(this.state.dataToFilter)
+        })
+
     };
 
     filterData = (dataToFilter) => {
@@ -25,7 +37,6 @@ class App extends Component {
             return item.title.toLowerCase()
                 .indexOf(dataToFilter.toLowerCase()) !==-1
         });
-        console.log(filteredData)
         this.setState({
             filteredData
         })
@@ -54,7 +65,8 @@ class App extends Component {
     return (
       <div className="App">
           <FetchForm onSubmit={this.fetchData} />
-          {this.state.fetchedData.length > 0 && <FilterInput onSubmit={this.filterData} /> }
+          {this.state.fetchedData.length > 0
+          && <FilterInput onChangeFilterInput={this.changeFilterInput} filterInputValue={this.state.dataToFilter } /> }
          <div>
              {filteredData.map(({ id, title, image, rating}) => (
                  <ListItem key={id}

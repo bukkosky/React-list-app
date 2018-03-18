@@ -2,32 +2,12 @@ import React, { Component } from 'react';
 import '../App.css';
 
 
-class FilterInput extends Component {
+const FilterInput = (props) =>  (
+    <input type="text"
+           onChange={props.onChangeFilterInput}
+           value={props.filterInputValue} placeholder="Search" />
+)
 
-    state = {
-        dataToFilter: ""
-    };
-
-    submit = (e) => {
-        e.preventDefault();
-        this.props.onSubmit(this.state.dataToFilter);
-    };
-
-    change = (e) => {
-        this.setState({
-            dataToFilter: e.target.value
-        })
-    };
-
-    render() {
-        return(
-            <form onSubmit={this.submit}>
-                <input type="text" onChange={this.change} value={this.state.dataToFilter} placeholder="Search" />
-                <input type="submit" value="Search"/>
-            </form>
-        )
-    }
-}
 
 
 export default FilterInput;
